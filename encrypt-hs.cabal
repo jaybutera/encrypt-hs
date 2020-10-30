@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 872627b7fea564d535930039e0216ad5e1be4e2c6d502c28bb4104d47bf9248c
+-- hash: 3168f52af182b49827ea3a797664e1fecbdd3ccb677610245ec1d948600e0313
 
 name:           encrypt-hs
 version:        0.1.0.0
@@ -15,11 +15,7 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2020 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    ChangeLog.md
 
 source-repository head
   type: git
@@ -36,6 +32,7 @@ library
       base >=4.7 && <5
     , bytestring ==0.10.10.1
     , cryptonite >=0.26
+    , directory >=1.3.6
     , memory ==0.15.0
   default-language: Haskell2010
 
@@ -50,6 +47,7 @@ executable encrypt-hs-exe
       base >=4.7 && <5
     , bytestring ==0.10.10.1
     , cryptonite >=0.26
+    , directory >=1.3.6
     , encrypt-hs
     , memory ==0.15.0
   default-language: Haskell2010
@@ -66,6 +64,7 @@ test-suite encrypt-hs-test
       base >=4.7 && <5
     , bytestring ==0.10.10.1
     , cryptonite >=0.26
+    , directory >=1.3.6
     , encrypt-hs
     , memory ==0.15.0
   default-language: Haskell2010
