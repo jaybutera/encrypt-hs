@@ -47,7 +47,7 @@ exampleAES256 msg = do
   secretKey <- genSecretKey (undefined :: AES256) 32
   mInitIV <- genRandomIV (undefined :: AES256)
   case mInitIV of
-    Nothing -> error "Failed to generate and initialization vector."
+    Nothing -> error "Failed to generate an initialization vector."
     Just initIV -> do
       let encryptedMsg = encrypt secretKey initIV msg
           decryptedMsg = decrypt secretKey initIV =<< encryptedMsg
