@@ -39,21 +39,3 @@ encrypt secretKey initVec msg =
 
 decrypt :: (BlockCipher c, ByteArray a) => Key c a -> IV c -> a -> Either CryptoError a
 decrypt = encrypt
-
-
-exampleAES256 :: ByteString -> IO ()
-exampleAES256 msg = do
-  -- secret key needs 256 bits (32 * 8)
-  secretKey <- genSecretKey (undefined :: AES256) 32
-  mInitIV <- genRandomIV (undefined :: AES256)
-  case mInitIV of
-    Nothing -> error "Failed to generate an initialization vector."
-    Just initIV -> do
-      let encryptedMsg = encrypt secretKey initIV msg
-          decryptedMsg = decrypt secretKey initIV =<< encryptedMsg
-      case (,) <$> encryptedMsg <*> decryptedMsg of
-        Left err -> error $ show err
-        Right (eMsg, dMsg) -> do
-          putStrLn $ "Original Message: " ++ show msg
-          putStrLn $ "Message after encryption: " ++ show eMsg
-          putStrLn $ "Message after decryption: " ++ show dMsg
